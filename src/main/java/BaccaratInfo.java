@@ -19,5 +19,6 @@ class BaccaratInfo implements Serializable {
     public int naturalWin;
     public int pPoints;
     public int bPoints;
-    
+    public ArrayList<String> pCardVals = new ArrayList<String>();
+    public ArrayList<String> bCardVals = new ArrayList<String>();
 }

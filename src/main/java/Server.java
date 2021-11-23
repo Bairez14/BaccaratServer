@@ -94,7 +94,7 @@ public class Server{
 				 while(true) { // start Baccarat stuff here??
 					    try {
 							// System.out.println("inside try loop, beginning");
-							BaccaratInfo clientInfo = (BaccaratInfo)in.readObject();
+							BaccaratInfo clientInfo = (BaccaratInfo)in.readObject(); //Null pointer exception hereeeee
 							game = new BaccaratGame();
 							// System.out.println(clientInfo);
 							game.betOn = clientInfo.betOnWho;
@@ -107,23 +107,16 @@ public class Server{
 							System.out.println("Player Cards:");
 							for(Card c: game.playerHand){
 								System.out.println(c.getSuite() + c.getValue());
+								clientInfo.pCardVals.add("Suite: " + c.getSuite() + " Value:" + c.getValue());
 								clientInfo.playerHand.add(c.toString()); 
 							}
 							System.out.println("Banker cards: ");
 							for(Card c: game.bankerHand){
-								
 								System.out.println(c.getSuite() + c.getValue());
+								clientInfo.bCardVals.add("Suite: " + c.getSuite() + " Value:" + c.getValue());
 								clientInfo.bankerHand.add(c.toString());
 								
 							}
-							//System.out.println("did cards");
-
-							// clientInfo.playerHand.add(game.playerHand.get(0).toString());
-							// System.out.println("got here");
-							// clientInfo.playerHand.add(game.playerHand.get(1).toString());
-							// System.out.println("got here 2");
-							// clientInfo.bankerHand.add(game.bankerHand.get(0).toString());
-							// clientInfo.bankerHand.add(game.bankerHand.get(1).toString());
 
 						
 							//System.out.println("got here");
@@ -136,6 +129,8 @@ public class Server{
 							clientInfo.bankerDrew = game.bdraw;
 							clientInfo.pPoints = BaccaratGameLogic.playerPoints;
 							clientInfo.bPoints = BaccaratGameLogic.bankerPoints;
+							//System.out.println(BaccaratGameLogic.playerPoints);
+							//System.out.println(BaccaratGameLogic.bankerPoints);
 							// game.totalWinnings = clientInfo.totalEarnings;
 							// game.pdraw = clientInfo.playerDrew;
 							// game.bdraw = clientInfo.bankerDrew;
