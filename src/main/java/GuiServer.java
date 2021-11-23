@@ -1,6 +1,5 @@
 
 import java.util.HashMap;
-
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -55,13 +54,15 @@ public class GuiServer extends Application{
 		portButton = new Button("Connect to Server");
 
 		portBox = new HBox(10, portField, portButton);
-		buttonBox = new HBox(400, turnOff);
+		buttonBox = new HBox(600, turnOff);
 		startPane = new BorderPane();
-		startPane.setPadding(new Insets(70));
-		startPane.setCenter(buttonBox);
-		startPane.setBottom(portBox);
+		startPane.setPadding(new Insets(250));
+		startPane.setBottom(buttonBox);
+		startPane.setCenter(portBox);
 
 		startScene = new Scene(startPane, 800, 800);
+		startScene.getRoot().setStyle("-fx-font-family: 'serif';" + "-fx-background-color: Red");
+				
 
 		beginServer = new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
@@ -105,10 +106,12 @@ public class GuiServer extends Application{
 		BorderPane serverPane = new BorderPane();
 		turnOff = new Button("Turn Off Server");
 		HBox serverBox = new HBox(10, turnOff, listItems);
-
 		serverPane.setCenter(serverBox);
 		turnOff.setOnAction(e-> primaryStage.close()); //turns off server, closes it
 		Scene serverScene = new Scene(serverPane, 800, 800);
+		listItems.setPrefWidth(575);
+		listItems.setPrefHeight(700);
+		serverScene.getRoot().setStyle("-fx-font-family: 'serif';" + "-fx-background-color: Red");
 		//sceneMap.put("gameInfo", serverScene);
 
 		return serverScene;

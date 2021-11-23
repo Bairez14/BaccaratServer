@@ -2,19 +2,6 @@ import java.util.ArrayList;
 import java.util.*;
 
 
-// BACCARATINFO CLASS
-// String betOn;
-//     double currentBet;
-//     ArrayList<String> playerHand = new ArrayList<String>();
-//     ArrayList<String> bankerHand = new ArrayList<String>();
-//     //int port;
-//     //String ipAddress;
-//     Boolean quit;
-//     double totalEarnings;
-//     double currentEarnings;
-//     String gameResult;
-
-
 public class BaccaratDealer{
     //data members
     ArrayList<Card> deck;
@@ -45,6 +32,8 @@ public class BaccaratDealer{
 
         // 13 numbers per suite
         // ace = 1 point, face and 10 = 0, everything else is worth their number (2-9)
+
+        shuffleDeck();
     }
     // give two cards
     public ArrayList<Card> dealHand() {

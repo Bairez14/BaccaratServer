@@ -3,7 +3,9 @@ import java.util.*;
 import java.lang.Math;
 
 public class BaccaratGameLogic {
-    String winner;
+    public static String winner;
+    public static int playerPoints;
+    public static int bankerPoints;
     /*The method whoWon will evaluate two hands at the end of the game and return a string
     depending on the winner: “Player”, “Banker”, “Draw”. The method handTotal will take a
     hand and return how many points that hand is worth. The methods evaluateBankerDraw
@@ -11,24 +13,29 @@ public class BaccaratGameLogic {
     otherwise return false.*/
 
    public static String whoWon(ArrayList<Card> hand1, ArrayList<Card> hand2) {
-       int playerPoints = handTotal(hand1);
-       int bankerPoints = handTotal(hand2);
+       playerPoints = handTotal(hand1);
+       bankerPoints = handTotal(hand2);
        int playerAbs = Math.abs(playerPoints-9);
        int bankerAbs = Math.abs(bankerPoints-9);
 
        if (naturalWinner(hand1, hand2) == 1) {
+           winner = "Player";
            return "Player";
        }
        else if (naturalWinner(hand1, hand2) == 2) {
+           winner = "Banker";
            return "Banker";
        }
        else if (naturalWinner(hand1, hand2) == 0) {
+           winner = "Draw";
            return "Draw";
        }
        else if (playerAbs > bankerAbs) { // check to see who is closer to 9 using math and absolute value method
+            winner = "Banker";
            return "Banker";
        }
        else if (playerAbs < bankerAbs) {
+            winner = "Player";
            return "Player";
        }
        return "";   
